@@ -168,9 +168,9 @@ jobs:
      - attach_workspace:
          at: ./
 
-      - step-cd
+      - stepup-cd
 
-      run:
+      - run:
         name: deploy non-production
         command: |
         cd artifacts/infra
