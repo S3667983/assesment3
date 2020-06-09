@@ -167,7 +167,9 @@ jobs:
     steps:
       - attach_workspace:
            at: ./
-      - stepup-cd
+
+      - setup-cd
+      
       - run:
          name: deploy non-production
          command: |
@@ -197,4 +199,5 @@ workflows:
       - deploy-test:
           requires:
             - build
+            - integration
           
