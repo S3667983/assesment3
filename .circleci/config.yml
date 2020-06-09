@@ -165,17 +165,15 @@ jobs:
     environment:
      ENV: test
     steps:
-     - attach_workspace:
-         at: ./
-
+      - attach_workspace:
+           at: ./
       - stepup-cd
-
       - run:
-        name: deploy non-production
-        command: |
-        cd artifacts/infra
-        make init
-        make up
+         name: deploy non-production
+         command: |
+            cd artifacts/infra
+            make init
+            make up
 
 
 workflows:
