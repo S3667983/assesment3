@@ -158,7 +158,24 @@ jobs:
           root: ./
           paths:
             - artifacts
+  
+  deploy-test:
+    docker:
+     - image: cimg/base:2020.01
+    environment:
+     ENV: test
+    steps:
+     - attach_workspace:
+         at: ./
 
+      - step-cd
+
+      run:
+        name: deploy non-production
+        command: |
+        cd artifacts/infra
+        make init
+        make up
 
 
 workflows:
@@ -179,3 +196,7 @@ workflows:
           filters:
             branches:
               only: master
+      - deploy-test:
+          requires:
+            - build
+          
