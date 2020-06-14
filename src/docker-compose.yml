@@ -13,4 +13,7 @@ services:
    contianer_name: pgadmin
    image: dbpage/pgadmin4
    environment:
-    - PGADMIN_DEF
+    - PGADMIN_DEFAULT_EMAIL=
+    - PGADMIN_DEFAULT_PASSWORD=password
+   ports:
+   - 8080:80

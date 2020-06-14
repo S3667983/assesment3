@@ -15,7 +15,7 @@ The solution starts by going into main.tf(look at first image) making the provid
 
 # Helm Chart
 ## Screenshots:
-
+/home/sdouser/assessment3-student-S3667983-master/screenshots/helm.png
 ## Analysis:
 Helm Charts are just Kubernates packages and opernation managemers; Kubernates being contianer-orchestration system used for automaticing apps deploymemt, scaling and management. The chart itself being collection of files related set of Kubernates resources; which can easily be deployed, even if its highly complex. 
 ## Solution:

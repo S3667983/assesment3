@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "app"
+  name: "acme-app"
 spec:
   selector:
-    matchlabel:
-      app: "rmit-app"
+    matchLabels:
+      app: "app-acme"
   replicas: 5
   template:
     metadata:
       labels:
-        app: "rmit-app"
-    specs:
-      contianers:
-        - image: ~/src/Dockerfile
-          imagePullPolicy: Always
-          name: "rmit-app"
-          ports:
-          - contianerPort: 80
+        app: "app-acme"
+    spec:
+      containers:
+      - image: ~/src/Dockerfile
+        imagePullPolicy: Always
+        name: "app-acme"
+        ports:
+        - containerPort: 80
