@@ -170,7 +170,9 @@ jobs:
          command: |
             cd artifacts/infra
             make init
-            make up
+      - run:
+         name: deploying
+         command: |
             helm upgrade rmit-app helm/app.tgz -i -n non-prod --wait --set images
       - run:
          name: upgrade database
