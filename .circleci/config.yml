@@ -145,8 +145,7 @@ jobs:
       - run:
           name: Package helm
           command: | 
-
-            #helm package helm/acme --app-version ${CIRCLE_SHA1} -d artifacts
+            helm package helm/app --app-version ${CIRCLE_SHA1} -d artifacts
       - run:
           name: Package infra
           command: |
@@ -157,7 +156,7 @@ jobs:
           paths:
             - artifacts
   
-  deploy-test:
+  nonDeploy:
     docker:
      - image: cimg/base:2020.01
     environment:
@@ -165,9 +164,24 @@ jobs:
     steps:
       - attach_workspace:
            at: ./
-
       - setup-cd
-      
+      - run:
+         name: deploy non-production
+         command: |
+            cd artifacts/infra
+            make init
+            make up
+            helm upgrade rmit-app helm/app.tgz -i -n non-prod --wait --set images
+
+  deploy:
+    docker:
+     - image: cimg/base:2020.01
+    environment:
+     ENV: prod
+    steps:
+      - attach_workspace:
+           at: ./
+      - setup-cd
       - run:
          name: deploy non-production
          command: |
@@ -194,8 +208,12 @@ workflows:
           filters:
             branches:
               only: master
-      - deploy-test:
+      - nonDeploy:
           requires:
             - build
             - integration
+      - deploy:
+          type: approval
+          requires:
+            - nonDeploy
           
