@@ -174,7 +174,7 @@ jobs:
       - run:
          name: deploying non-production
          command: |
-            helm upgrade rmit-app helm/app.tgz -i -n non-prod --wait --set images
+            helm upgrade rmit-app ~/helm/app.tgz -i -n non-prod --wait --set images=$(cat artifacts/image.txt)
       - run:
          name: upgrade database
          command: |

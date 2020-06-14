@@ -1,0 +1,13 @@
+version "3"
+services: 
+ db:
+  contianer_name: db
+  image: postgres: 10.7
+  restart: always
+  volumes
+  ports:
+   -"5432:5432"
+  environment:
+   - POSTGRES_PASSWORD=password
+  pgadmin: 
+  
