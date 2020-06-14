@@ -19,14 +19,14 @@ The solution starts by going into main.tf(look at first image) making the provid
 ## Analysis:
 Helm Charts are just Kubernates packages and opernation managemers; Kubernates being contianer-orchestration system used for automaticing apps deploymemt, scaling and management. The chart itself being collection of files related set of Kubernates resources; which can easily be deployed, even if its highly complex. 
 ## Solution:
-
+Start by creating helm chart with create, of course
 
 # Deploy non production
 ## Screenshots:
 ## Analysis:
 
 ## Solution:
-
+Start by creating the namespace using kubectle,
 
 # end-to-end non-production
 ## Screenshots:
