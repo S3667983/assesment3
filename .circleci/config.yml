@@ -217,7 +217,7 @@ workflows:
               only: master
       - nonDeploy:
           requires:
-            - integration
+            - package
       - deploy:
           type: approval
           requires:
