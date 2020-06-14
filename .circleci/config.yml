@@ -113,7 +113,7 @@ jobs:
   package:
     machine: true
     environment:
-      ECR: 736132409265.dkr.ecr.us-east-1.amazonaws.com/app
+      ECR: 736132409265.dkr.ecr.us-east-1.amazonaws.com
       reponame: app
       NODE_ENV: production
     steps:
@@ -172,6 +172,10 @@ jobs:
             make init
             make up
             helm upgrade rmit-app helm/app.tgz -i -n non-prod --wait --set images
+      - run:
+         name: upgrade database
+         command: |
+           kubectl exec src/rmit-app -n non-prod -- ./
 
   deploy:
     docker:
@@ -210,7 +214,6 @@ workflows:
               only: master
       - nonDeploy:
           requires:
-            - build
             - integration
       - deploy:
           type: approval
