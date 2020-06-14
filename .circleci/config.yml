@@ -175,11 +175,11 @@ jobs:
       - run:
          name: deploying non-production
          command: |
-            helm upgrade rmit-app artifacts/app-0.1.7.tgz -i -n non-prod --wait --set images=$(cat artifacts/image.txt)
+            helm upgrade app artifacts/app-0.1.7.tgz -i -n non-prod --wait --set images=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
       - run:
          name: upgrade database
          command: |
-           kubectl exec src/rmit-app -n non-prod -- ./
+           kubectl exec src/rmit-app -n non-prod -- ./App updatedb -s
 
   deploy:
     docker:
@@ -196,6 +196,15 @@ jobs:
             cd artifacts/infra
             make init
             make up
+            terraform output endpoint > ../dbendpoint.txt
+      - run:
+         name: deploying non-production
+         command: |
+            helm upgrade app artifacts/app-0.1.7.tgz -i -n non-prod --wait --set images=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
+      - run:
+         name: upgrade database
+         command: |
+           kubectl exec src/rmit-app -n non-prod -- ./App updatedb -s
 
 
 workflows:
