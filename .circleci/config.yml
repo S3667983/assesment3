@@ -175,11 +175,11 @@ jobs:
       - run:
          name: deploying non-production
          command: |
-            helm upgrade acme-app3 ./helm/app/app-0.2.0.tgz -i -n non-prod --wait --set image=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
+            helm upgrade acme-app3 artifacts/app-0.2.0.tgz -i -n non-prod --wait --set image=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
       - run:
          name: upgrade database
          command: |
-           kubectl exec deployment/rmit-app -n non-prod -- ./Acme-app updatedb -s
+           kubectl exec deployment/acme-app3 -n non-prod -- ./Acme-app3 updatedb -s
 
   deploy:
     docker:
