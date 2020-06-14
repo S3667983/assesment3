@@ -10,4 +10,7 @@ services:
   environment:
    - POSTGRES_PASSWORD=password
   pgadmin: 
-  
+   contianer_name: pgadmin
+   image: dbpage/pgadmin4
+   environment:
+    - PGADMIN_DEF
