@@ -175,7 +175,7 @@ jobs:
       - run:
          name: deploying non-production
          command: |
-         cd artifacts/infra
+            cd artifacts/infra
             helm upgrade acme-app3 ./app-0.2.0.tgz -i -n non-prod --wait --set image=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
       - run:
          name: upgrade database
