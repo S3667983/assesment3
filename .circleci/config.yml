@@ -231,5 +231,5 @@ workflows:
       - deploy:
           type: approval
           requires:
-            - nonDeploy
+            - package
           
