@@ -15,13 +15,16 @@ The solution starts by going into main.tf(look at first image) making the provid
 
 # Helm Chart
 ## Screenshots:
+
 ## Analysis:
+Helm Charts are just Kubernates packages and opernation managemers; Kubernates being contianer-orchestration system used for automaticing apps deploymemt, scaling and management. The chart itself being collection of files related set of Kubernates resources; which can easily be deployed, even if its highly complex. 
 ## Solution:
 
 
 # Deploy non production
 ## Screenshots:
 ## Analysis:
+
 ## Solution:
 
 
@@ -48,4 +51,4 @@ The solution starts by going into main.tf(look at first image) making the provid
 ## Analysis:
 ## Solution:
 
-To stand up the kubernetes cluster go into the `environment` directory and follow the directions in the make file
+
