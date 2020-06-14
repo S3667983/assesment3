@@ -175,7 +175,7 @@ jobs:
       - run:
          name: deploying non-production
          command: |
-            helm upgrade acme-app3 ./app-0.2.0.tgz -i -n non-prod --wait --set image=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
+            helm upgrade acme-app4 ./app-0.2.0.tgz -i -n non-prod --wait --set image=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
       - run:
          name: upgrade database
          command: |
@@ -200,7 +200,7 @@ jobs:
       - run:
          name: deploying non-production
          command: |
-            helm upgrade acme-app3 artifacts/app-0.2.0.tgz -i -n prod --wait --set image=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
+            helm upgrade acme-app4 artifacts/app-0.2.0.tgz -i -n prod --wait --set image=$(cat artifacts/image.txt), dbhost=$(cat artifacts/dbendpoint.txt)
       - run:
          name: upgrade database
          command: |
